@@ -1,0 +1,16 @@
+# CodeWarrior build output
+Debug/
+Release/
+Checklists_Data/Debug/
+Checklists_Data/Release/
+*.prc
+*.psym
+*.MAP
+*.ro
+
+# Python
+__pycache__/
+*.pyc
+
+# Stray copy; the real one lives in Tools/
+Rsc/logo_big.png
