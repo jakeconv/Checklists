@@ -42,6 +42,8 @@ Forms (all 160x160 or modal dialogs): `frmMain` (Lists / Templates tabs), `frmCh
 
 Lists are custom-drawn (`LstSetDrawFunction`) with separate scroll bars, so there are no per-row string arrays. The ID-to-form mapping lives in `checklist_res.h`.
 
+Menu > **Copy...** (on the open template or list, in `frmEdit` and `frmChecklist`) duplicates the record under a new name (default "Copy of ...") via `CopyCurrent()` and opens the copy; a copied list has all items unchecked. Starting a list from a template is separate (`StartFromTemplate()`, the New button on the Lists tab).
+
 Limits: 100 items per list, 39 characters per item or name, 200 records.
 
 ### Data format

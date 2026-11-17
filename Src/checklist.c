@@ -737,6 +737,41 @@ static Boolean DeleteCurrent(void)
     return true;
 }
 
+/*
+ * Copies the open template or list under a new name and opens the copy.
+ * A copied list starts with every item unchecked.
+ */
+static void CopyCurrent(void)
+{
+    Char   name[NAME_LEN];
+    UInt16 rec = NEW_REC, i;
+    UInt8  kind = g_list->kind;
+
+    if (DmNumRecords(g_db) >= MAX_RECS) {
+        FrmAlert(alertTooMany);
+        return;
+    }
+    StrCopy(name, "Copy of ");
+    StrNCopy(name + 8, g_list->name, NAME_LEN - 9);
+    name[NAME_LEN - 1] = 0;
+    if (AskText(kind == KIND_TEMPLATE ? "Copy template" : "Copy list",
+                name, false) == 0)
+        return;
+
+    StrCopy(g_list->name, g_textBuf);
+    for (i = 0; i < MAX_ITEMS; i++)
+        g_list->done[i] = 0;
+    if (!SaveList(&rec)) {
+        LoadList(g_rec);                /* drop the renamed in-memory copy */
+        FrmAlert(alertSaveFail);
+        return;
+    }
+    g_rec = rec;
+    g_view = kind;
+    g_return = frmMain;
+    FrmGotoForm(kind == KIND_TEMPLATE ? frmEdit : frmChecklist);
+}
+
 static void StartFromTemplate(void)
 {
     UInt16 tmpl, rec = NEW_REC, i;
@@ -963,6 +998,10 @@ static Boolean CheckHandler(EventType *ev)
             RenameCurrent(frm);
             handled = true;
             break;
+        case mnuCopy:
+            CopyCurrent();
+            handled = true;
+            break;
         case mnuBeam:
             BeamRecord(g_rec);
             handled = true;
@@ -1099,6 +1138,10 @@ static Boolean EditHandler(EventType *ev)
             break;
         case mnuRename:
             RenameCurrent(frm);
+            handled = true;
+            break;
+        case mnuCopy:
+            CopyCurrent();
             handled = true;
             break;
         case mnuBeam:

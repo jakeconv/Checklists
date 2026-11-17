@@ -66,6 +66,7 @@
 #define mnuBeam          2106
 #define mnuDelete        2107
 #define mnuAbout         2108
+#define mnuCopy          2109
 
 /* Alerts */
 #define alertDelete      3000
@@ -75,6 +76,7 @@
 #define alertBeamFail    3004
 #define alertSaveFail    3005
 #define alertNoSelection 3006
+#define alertTooMany     3007
 
 /* Bitmaps */
 #define bmpLogo          4000

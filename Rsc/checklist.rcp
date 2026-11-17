@@ -114,6 +114,7 @@ BEGIN
         MENUITEM "Edit Items" ID mnuEditItems "E"
         MENUITEM "Add Item" ID mnuAddItem "A"
         MENUITEM "Rename..." ID mnuRename "R"
+        MENUITEM "Copy..." ID mnuCopy "C"
         MENUITEM "Beam" ID mnuBeam "B"
         MENUITEM "Delete List" ID mnuDelete "D"
     END
@@ -129,6 +130,7 @@ BEGIN
     BEGIN
         MENUITEM "Add Item" ID mnuAddItem "A"
         MENUITEM "Rename..." ID mnuRename "R"
+        MENUITEM "Copy..." ID mnuCopy "C"
         MENUITEM "Beam" ID mnuBeam "B"
         MENUITEM "Delete" ID mnuDelete "D"
     END
@@ -184,6 +186,14 @@ ERROR
 BEGIN
     TITLE "Not saved"
     MESSAGE "The change could not be saved. The device may be low on memory."
+    BUTTONS "OK"
+END
+
+ALERT ID alertTooMany
+INFORMATION
+BEGIN
+    TITLE "Too many items"
+    MESSAGE "There is no room for another list or template. Delete one first."
     BUTTONS "OK"
 END
 
