@@ -32,7 +32,8 @@ Folder layout: `Src\`, `Rsc\`, `Tools\`, plus `Checklists.mcp` (CodeWarrior proj
 | `Tools\jakesoft-logo.svg` | The owner's Jakesoft logo, source for the About-box bitmaps. |
 | `Tools\icon.svg` | 128x128 icon in the Rabbit r1 style (not used by the Palm build). |
 | `Tools\preview_*.png`, `Tools\logo_big.png` | Enlarged previews and the intermediate 960x360 logo render. |
-| `readme.txt` | Short user-facing setup and usage notes. |
+| `README.md` | User-facing setup, usage and build notes (replaced the stale CodeWarrior wizard `readme.txt`). |
+| `LICENSE` | MIT, copyright Jakesoft. |
 
 Keep the `.bmp` files next to `checklist.rcp` (in `Rsc`) when building. `Rsc\logo_big.png` is a stray copy of the one in `Tools`; the build doesn't use it.
 
